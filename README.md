@@ -6,6 +6,7 @@ we have a ret2win challenge.
 ![Pasted image 20241011230907](https://github.com/user-attachments/assets/7c3b7934-4b88-4064-8976-a03df723f362)
 
 1. So let's started by knowing more about the binary.
+
 ![Pasted image 20241011224424](https://github.com/user-attachments/assets/9a89adff-f190-460d-838c-9f036826532b)
 using file command we can learn about : 
 - “LSB” here stands for “least-significant byte” , as opposed to “MSB”, “most-significant byte”. It means that the binary is little-endian.
@@ -13,12 +14,14 @@ using file command we can learn about :
 - dynamically linked : meaning calls needed functions outside the binary unlike statically linked which have functions compiled inside the binary .
 - libc and loader versions .
 - not stripped : the binary have symbols (variables and functions names) which a good thing.
-2. check protections 
+2. check protections
+  
 ![Pasted image 20241011225950](https://github.com/user-attachments/assets/583bb9c8-15bb-4092-8ac1-82b89bb0cab6)
 
 Using `checksec` we can see that there is no canary (potential buffer overflow) , no pie (addresses are not randomized and changing with each execution) , partial relro (we can overwrite a got table entry) and NX is enabled (we cannot execute a shell in stack)
 3. disassembling and decompiling with cutter
 Functions are listed
+
 ![Pasted image 20241011221716](https://github.com/user-attachments/assets/45c21735-14f7-4ddc-828f-041379316a84)
 
 we see main,pwnme,and ret2win functions
